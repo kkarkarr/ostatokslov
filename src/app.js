@@ -1,6 +1,6 @@
 import express from 'express';
 
-import userRouter from './resources/users/user.router.js';
+import userRouter from './resources/players/player.router';
 
 const app = express();
 
