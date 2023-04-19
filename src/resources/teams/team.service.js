@@ -1,5 +1,16 @@
-import * as usersRepo from './user.memory.repository.js';
+import * as teamsRepo from './team.memory.repository.js';
 
-const getAll = () => usersRepo.getAll();
+const getAllTeams = () => teamsRepo.getAllTeams();
+const getTeamById = (id) => teamsRepo.getTeamById(id);
+const createTeam = ({ id, name, region, country, trophyId, playerId}) => teamsRepo.createTeam({ id, name, region, country, trophyId, playerId});
+const deleteTeamById = (id) => teamsRepo.deleteTeamById(id);
+const updateById = ({id, name, region, country, trophyId, playerId}) => teamsRepo.updateById ({id, name, region, country, trophyId, playerId});
 
-export { getAll };
+
+
+export { getAllTeams,
+    getTeamById,
+    createTeam,
+    deleteTeamById,
+    updateById, 
+ };

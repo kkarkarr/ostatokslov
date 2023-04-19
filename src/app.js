@@ -1,6 +1,9 @@
 import express from 'express';
+import bodyParser from 'body-parser';
 
-import userRouter from './resources/players/player.router';
+import playerRouter from './resources/players/player.router.js';
+import teamRouter from "./resources/teams/team.router.js";
+import trophyRouter from "./resources/trophies/trophy.router.js";
 
 const app = express();
 
@@ -14,6 +17,10 @@ app.use('/', (req, res, next) => {
   next();
 });
 
-app.use('/users', userRouter);
+app.use('/players', playerRouter);
+app.use('/teams', teamRouter);
+app.use('/trophies', trophyRouter);
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 export default app;

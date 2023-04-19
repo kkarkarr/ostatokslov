@@ -1,4 +1,4 @@
-import { Trophy } from './trophy.model';
+import  Trophy  from './trophy.model.js';
 
 const Trophies = [
   new Trophy ({ id: 1 ,name: 'EPL S17', place: 'Malta Arena', country: 'Malta', winner: 'FaZe' }),
@@ -40,7 +40,7 @@ const updateTrophyById = async ({ id, name, place, country, winner }) => {
 export default {
   Trophies,
   getAllTrophies,
-  getTeamById,
+  getTrophyById,
   createTrophy,
   deleteTrophyById,
   updateTrophyById

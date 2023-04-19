@@ -1,4 +1,4 @@
-import { Player } from './player.model';
+import  Player  from './player.model.js';
 
 const Players = [
   new Player({ id: 1, name: 'Sergey', surname: 'Rykhtorov', nickname: 'Ax1le', teamId: 1, country: 'Russia', references: ['MVP EPL S13', 'TOP-4 2022'], age: 20 }),

@@ -1,4 +1,4 @@
-import { Team } from './team.model';
+import  Team  from './team.model.js';
 
 const Teams = [
   new Team ({ id: 1 ,name: 'Cloud9', region: 'SNG', country: 'Russia', trophyId: 1, playerId: 1 }),
