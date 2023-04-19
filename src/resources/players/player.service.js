@@ -2,7 +2,7 @@ import * as playersRepo from './player.memory.repository.js';
 import * as teamsRepo from '../teams/team.memory.repository.js'
 
 const getAll = () => playersRepo.getAll();
-const getById = (id) => playersRepo.getById(id);
+const getPlayerById = (id) => playersRepo.getById(id);
 const createPlayer = ({id, name, surname, nickname, teamId, country, references, age})  =>
    playersRepo.createPlayer({id, name, surname, nickname, teamId, country, references, age});
 const deleteById = async (id) => 
@@ -17,7 +17,7 @@ const deleteById = async (id) =>
 const updateById = ({id, name, surname, nickname, teamId, country, references, age}) => playersRepo.updateById({id, name, surname, nickname, teamId, country, references, age});
 
 
-export default { getAll, getById,
+export default { getAll, getPlayerById,
     createPlayer,
     deleteById,
     updateById,};

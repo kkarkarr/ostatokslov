@@ -6,7 +6,7 @@ const Players = [
 
 const getAll = async () => Players;
 
-const getById = async (id) => Players.find((player) => player.id === id);
+const getPlayerById = async (id) => Players.find((player) => player.id === id);
 
 const createPlayer = async ({ id, name, surname, nickname, teamId, country, references, age }) => {
   const player = new Player({ id, name, surname, nickname, teamId, country, references, age });

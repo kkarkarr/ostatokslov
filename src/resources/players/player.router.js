@@ -3,13 +3,14 @@ import Player from './player.model.js';
 import * as playersService from './player.service.js';
 import catchErrors from '../../common/catchErrors.js';
 import { StatusCodes } from "http-status-codes";
-import { getById } from './player.memory.repository.js';
+import { getPlayerById } from './player.memory.repository.js';
 
 const router = Router();
 
 router.route('/').get(
   catchErrors(async (req, res) => {
     const players = await playersService.getAll();
+
     res.json(players.map(Player.toResponse));
   })
 );
