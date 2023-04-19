@@ -3,7 +3,7 @@ import Player from './player.model.js';
 import * as playersService from './player.service.js';
 import catchErrors from '../../common/catchErrors.js';
 import { StatusCodes } from "http-status-codes";
-import { getPlayerById } from './player.memory.repository.js';
+import { getById } from './player.memory.repository.js';
 
 const router = Router();
 
