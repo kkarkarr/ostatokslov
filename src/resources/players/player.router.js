@@ -3,6 +3,7 @@ import Player from './player.model.js';
 import * as playersService from './player.service.js';
 import catchErrors from '../../common/catchErrors.js';
 import { StatusCodes } from "http-status-codes";
+import { getPlayerById } from './player.memory.repository.js';
 
 const router = Router();
 
@@ -15,9 +16,9 @@ router.route('/').get(
 
 router.route('/').post(
   catchErrors(async (req, res) => {
-    const { name, surname, nickname, teamId } = req.body;
+    const { id, name, surname, nickname, teamId } = req.body;
 
-    const player = await playersService.createPlayer({name, surname, nickname, teamId });
+    const player = await playersService.createPlayer({id, name, surname, nickname, teamId });
 
     if (player) {
       res.status(StatusCodes.CREATED).json(Player.toResponse(Player));
