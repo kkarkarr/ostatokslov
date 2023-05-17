@@ -1,12 +1,12 @@
 import  Trophy  from './trophy.model.js';
 
 const Trophies = [
-  new Trophy ({ id: 1 ,name: 'EPL S17', place: 'Malta Arena', country: 'Malta', winner: 'FaZe' }),
+  new Trophy ({ id: "1" ,name: 'EPL S17', place: 'Malta Arena', country: 'Malta', winner: 'FaZe' }),
 ];
 
 const getAllTrophies = async () => Trophies;
 
-const getTrophyById = async (id) => Trophies.find((team) => trophy.id === id);
+const getTrophyById = async (id) => Trophies.find((trophy) => trophy.id === id);
 
 const createTrophy = async ({ id, name, place, country, winner }) => {
   const trophy = new Trophy({ id, name, place, country, winner});
@@ -37,7 +37,7 @@ const updateTrophyById = async ({ id, name, place, country, winner }) => {
   return newTrophy;
 };
 
-export default {
+export  {
   Trophies,
   getAllTrophies,
   getTrophyById,

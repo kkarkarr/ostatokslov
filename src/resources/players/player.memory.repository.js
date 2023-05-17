@@ -1,7 +1,8 @@
 import  Player  from './player.model.js';
 
 const Players = [
-  new Player({ id: 1, name: 'Sergey', surname: 'Rykhtorov', nickname: 'Ax1le', teamId: 1, country: 'Russia', references: ['MVP EPL S13', 'TOP-4 2022'], age: 20 }),
+  new Player({ id: '1', name: 'Sergey', surname: 'Rykhtorov', nickname: 'Ax1le', teamId: "2", country: 'Russia', references: ['MVP EPL S13', 'TOP-4 2022'], age: 20 }),
+  new Player({  id: '2', name: 'Daniil', surname: 'Pavlovski', nickname: 'Ev1lgen1us', teamId: "2", country: 'Belarus', references:'netu', age: 17})
 ];
 
 const getAll = async () => Players;
@@ -39,10 +40,10 @@ const updateById = async ({ id, name, surname, nickname, teamId, country, refere
 
 
 
-export default {
+export{
   Players,
   getAll,
-  getById,
+  getPlayerById,
   createPlayer,
   deleteById,
   updateById,

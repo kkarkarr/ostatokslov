@@ -34,11 +34,11 @@ router.route('/:id').get(
     const team = await teamsService.getTeamById(id);
 
     if (team) {
-      res.json(Player.toResponse(player));
+      res.json(Team.toResponse(team));
     } else {
       res
         .status(StatusCodes.NOT_FOUND)
-        .json({ code: 'PLAYER_NOT_FOUND', msg: 'Player not found' });
+        .json({ code: 'TEAM_NOT_FOUND', msg: 'Team not found' });
     }
   })
 );
@@ -66,13 +66,13 @@ router.route('/:id').delete(
 
     const team = await teamsService.deleteTeamById(id);
 
-    if (!team) {
-      return res
+    if (team === undefined) {
+      res
         .status(StatusCodes.NOT_FOUND)
         .json({ code: 'TEAM_NOT_FOUND', msg: 'Team not found' });
     }
-
-    return res
+    await teamsService.deleteTeamById(id);
+    res
       .status(StatusCodes.NO_CONTENT)
       .json({ code: 'TEAMS_DELETED', msg: 'The Team has been deleted' });
   })

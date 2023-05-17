@@ -8,10 +8,9 @@ const deleteTrophyById = async (id) => {
     const trophyDeletable = await getTrophyById (id);
     trophiesRepo.deleteTrophyById(id);
     teamsRepo.deleteTrophyById(id);
-
     return trophyDeletable;
  };
 
 const updateTrophyById = ({id, name, place, country, winner}) => trophiesRepo.updateTrophyById({id, name, place, country, winner});
 
-export default { getAllTrophies, getTrophyById, createTrophy, deleteTrophyById, updateTrophyById};
+export  { getAllTrophies, getTrophyById, createTrophy, deleteTrophyById, updateTrophyById};

@@ -3,7 +3,7 @@ import Player from './player.model.js';
 import * as playersService from './player.service.js';
 import catchErrors from '../../common/catchErrors.js';
 import { StatusCodes } from "http-status-codes";
-import { getPlayerById } from './player.memory.repository.js';
+
 
 const router = Router();
 
@@ -17,9 +17,9 @@ router.route('/').get(
 
 router.route('/').post(
   catchErrors(async (req, res) => {
-    const { id, name, surname, nickname, teamId } = req.body;
+    const { id, name, surname, nickname, teamId, country, references, age } = req.body;
 
-    const player = await playersService.createPlayer({id, name, surname, nickname, teamId });
+    const player = await playersService.createPlayer({id, name, surname, nickname, teamId, country, references, age });
 
     if (player) {
       res.status(StatusCodes.CREATED).json(Player.toResponse(Player));
@@ -35,7 +35,7 @@ router.route('/:id').get(
   catchErrors(async (req, res) => {
     const { id } = req.params;
 
-    const player = await playersService.getById(id);
+    const player = await playersService.getPlayerById(id);
 
     if (player) {
       res.json(Player.toResponse(player));
@@ -50,9 +50,9 @@ router.route('/:id').get(
 router.route('/:id').put(
   catchErrors(async (req, res) => {
     const { id } = req.params;
-    const { name, surname, nickname, teamId } = req.body;
+    const { name, surname, nickname, teamId, country, references, age } = req.body;
 
-    const user = await playersService.updateById({ id, name, surname, nickname, teamId});
+    const player = await playersService.updateById({ id, name, surname, nickname, teamId, country, references, age});
 
     if (player) {
       res.status(StatusCodes.OK).json(Player.toResponse(player));
@@ -67,18 +67,16 @@ router.route('/:id').put(
 router.route('/:id').delete(
   catchErrors(async (req, res) => {
     const { id } = req.params;
-
-    const player = await playersService.deleteById(id);
-
-    if (!player) {
-      return res
+    const player = await playersService.getPlayerById(id)
+    if (player === undefined) {
+      res
         .status(StatusCodes.NOT_FOUND)
-        .json({ code: 'PLAYER_NOT_FOUND', msg: 'Player not found' });
+        .json({ code: 'PLAYER_NOT_FOUND', msg: 'PLayer not found' });
     }
-
-    return res
-      .status(StatusCodes.NO_CONTENT)
-      .json({ code: 'PLAYERS_DELETED', msg: 'The Player has been deleted' });
+    await playersService.deleteById(id);
+    res
+      .status(StatusCodes.OK)
+      .json({ code: 'PLAYER_DELETED', msg: 'The player has been deleted' });
   })
 );
 

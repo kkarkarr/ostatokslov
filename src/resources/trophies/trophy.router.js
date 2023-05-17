@@ -31,7 +31,7 @@ router.route('/:id').get(
   catchErrors(async (req, res) => {
     const { id } = req.params;
 
-    const trophy = await playersService.getTrophyById(id);
+    const trophy = await trophiesService.getTrophyById(id);
 
     if (trophy) {
       res.json(Trophy.toResponse(trophy));
@@ -66,13 +66,14 @@ router.route('/:id').delete(
 
     const trophy = await trophiesService.deleteTrophyById(id);
 
-    if (!trophy) {
-      return res
+    if (trophy === undefined) {
+      res
         .status(StatusCodes.NOT_FOUND)
         .json({ code: 'TROPHY_NOT_FOUND', msg: 'Trophy not found' });
     }
 
-    return res
+    await trophiesService.deleteTrophyById(id);
+    res
       .status(StatusCodes.NO_CONTENT)
       .json({ code: 'TROPHIES_DELETED', msg: 'The Trophy has been deleted' });
   })

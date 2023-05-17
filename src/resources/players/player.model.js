@@ -13,8 +13,8 @@ class Player {
   }
 
   static toResponse(player) {
-    const { id, name, surname, nickname, teamId } = player;
-    return { id, name, surname, nickname, teamId };
+    const { id, name, surname, nickname, teamId, country, references, age } = player;
+    return { id, name, surname, nickname, teamId, country, references, age };
   }
 }
 
